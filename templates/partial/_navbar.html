@@ -1,0 +1,30 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light shadow sticky-top">
+    <div class="container">
+        <a href="" class="navbar-brand">E-Commerce</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dp">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="dp">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+            <li class="nav-item">
+                <a href="{%url 'ordersummary' %}" class="nav-link">
+                <i class="fas fa-shopping-cart"> </i><span class="badge bg-success ">{{count}}</span>
+                </a>
+            </li>
+            {% if request.user.is_authenticated%}
+            <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link btn btn-danger text-white">Logout</a></li>
+            <li class="nav-item"><a href="{% url 'dashboard' %}" class="nav-link" >Dashboard</a></li>
+
+            {% else %}
+            <li class="nav-item"><a href="{% url 'login' %}" class="nav-link btn btn-success text-white">Login/Register</a></li>
+            {% endif %}
+            
+        </ul>
+    </div>
+
+    </div>
+</nav>

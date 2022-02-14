@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<div class="container my-5">
+    <!-- products -->
+  <div class="row">
+
+    {% if products %}
+        {% for items in products %}
+        <div class="col-md-3 col-sm-4">
+                <a href="{% url 'product' items.id %}" class="text-decoration-none">
+                <div class="card my-2">
+                    <img height="200" src="{{ items.image.url }}" alt="" class="card-img">
+                    <div class="card-body">
+                        <p class="text-secondary text-center">{{items.category}}</p>
+                        <h4 class="text-center"> {{items.title}} </h4>
+                        
+                        {% if items.discount_price %}
+                        <span class="price">&#8358; {{items.discount_price|intcomma}}</span>
+                        &nbsp; <del class="text-danger">&#8358;{{items.price|intcomma}}</del>
+                        {%else%}
+                        &nbsp; <span>&#8358;{{items.price|intcomma}}</span>
+                        {% endif %}
+                        
+                        <span class="badge badge-success  ml-4"> New </span>
+                    </div>
+                </div>
+            </a>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p class="lead bg-success text-white p-5 text-center">No product available yet</p>
+            {% endif %}
+            
+        </div>
+</div>
+
+{% endblock content %}

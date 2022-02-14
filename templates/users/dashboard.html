@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h3>Welcome {{profile.username}}</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ profile.profile_pix.url }}" height="200" class="img-fluid" alt="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <a href="{% url 'editprofile' %}">Edit Profile</a>
+                <ul class="list-group">
+                    <li class="list-group-item">{{profile.name}}</li>
+                    <li class="list-group-item">{{profile.username}}</li>
+                    <li class="list-group-item">{{profile.email}}</li>
+                  </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <a href="">Orders</a>
+                <ul class="list-group">
+                    {% if order %}
+                      {% for item in order  %}
+                      <li class="list-group-item">{{item.items.title}}</li>
+                      {% endfor %}
+                    {% endif %}
+                  </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

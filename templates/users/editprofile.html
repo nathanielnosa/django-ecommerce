@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-md-5 mx-auto">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class="card-title my-2 h2">Edit Profile</div>
+                        <form method="POST" enctype="multipart/form-data">
+                         {% csrf_token %}
+                         {% for fields in form %}
+                         {{fields.label}}
+                         {{fields}}
+                         {% for error in fields.errors  %}
+                           <span class="text-danger">* {{error}}</span>
+                         {% endfor %}
+                        {% endfor %}           
+                        
+                         <div class="d-grid gap-2">
+                             <button type="submit" class="btn btn-success my-3">Update Profile</button>
+                         </div>
+                     
+                       </form>
+                    </div>
+                </div>
+             </div>
+
+        </div>
+    </div>
+{% endblock content %}
