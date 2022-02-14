@@ -24,7 +24,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','simple-django-ecom.herokuapp.com']
 
 
 # Application definition
@@ -81,10 +81,20 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'df232ft96rb7h6',
+        'USER': 'heecpytatrsrdg',
+        'HOST': 'ec2-54-83-21-198.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'PASSWORD': 'd73b6557fe176c39619aec1bbcc12cc0db8ee28e1a2445eabffd9bcc2b734b86'
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
